@@ -32,23 +32,23 @@ int main(int argc, char** argv) {
 
   srandom(time(NULL));
 
-	while ((arg = argv[1]) != NULL) {
-		if (*arg != '-')
-			break;
-		for (;;) {
-			switch (*++arg) {
-			case 0:
-				break;
-			case 'r':
-				random_list = 1;
-				continue;
-			default:
-				printf("Unknown flag '%s'", arg);
-			}
-			break;
-		}
-		argv++;
-	}
+  while ((arg = argv[1]) != NULL) {
+    if (*arg != '-')
+      break;
+    for (;;) {
+      switch (*++arg) {
+      case 0:
+        break;
+      case 'r':
+        random_list = 1;
+        continue;
+      default:
+        printf("Unknown flag '%s'", arg);
+      }
+      break;
+    }
+    argv++;
+  }
 
   for (size_t i = 0; i < SIZE - 1; ++i) 
     array[i].next = &array[i + 1];
@@ -74,7 +74,7 @@ int main(int argc, char** argv) {
   usec = usec_diff(&start, &end);
 
   // Make sure the compiler doesn't compile away offset
-	*(volatile unsigned int *)(&dummy);
+  *(volatile unsigned int *)(&dummy);
 
   cycles = 1000 * (double) usec / N;
 
